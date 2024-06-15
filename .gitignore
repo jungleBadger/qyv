@@ -1,0 +1,41 @@
+# Python fastAPI app under the service folder using Poetry
+/service/__pycache__/
+/service/*.py[cod]
+/service/Pipfile
+/service/Pipfile.lock
+/service/.python-version
+/service/.pytest_cache/
+/service/.mypy_cache/
+/service/.venv
+/service/poetry.lock
+/service/poetry.toml
+/service/.env
+/service/.env.local
+/service/.env.development.local
+/service/.env.test.local
+/service/.env.production.local
+
+
+# Virtual environment
+/service/venv/
+/service/.venv/
+
+# Node.js and Vue.js app under the ui folder using NPM
+/ui/node_modules/
+/ui/dist/
+/ui/build/
+/ui/.env
+/ui/.env.local
+/ui/.env.development.local
+/ui/.env.test.local
+/ui/.env.production.local
+
+# JetBrains PyCharm and WebStorm project files
+/.idea/
+/*.iml
+
+# General
+.DS_Store
+Thumbs.db
+.vscode/
+*.log
