@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "qyv_service"
+version = "0.1.0"
+description = ""
+authors = ["Daniel Abrao <danielpaladar@gmail.com>"]
+readme = "README.md"
+packages = [{include = "app", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.111.0"
+uvicorn = "^0.30.1"
+
+
+python-dotenv = "^1.0.1"
+[tool.poetry.group.dev.dependencies]
+pycodestyle = "^2.12.0"
+
+autopep8 = "^2.2.0"
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+start = "start:main"
+lint = "run_pycodestyle:main"

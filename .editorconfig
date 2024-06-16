@@ -1,0 +1,58 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# Top-most EditorConfig file
+root = true
+
+# Default settings
+[*]
+# Unix-style newlines
+end_of_line = lf
+
+# Set default charset
+charset = utf-8
+
+# Indentation style and size
+indent_style = space
+indent_size = 2
+
+# Remove any trailing whitespace
+trim_trailing_whitespace = true
+
+# Insert a final newline at the end of the file
+insert_final_newline = true
+
+# Python files
+[*.py]
+# PEP 8 recommends 4 spaces for indentation
+indent_size = 4
+
+# JavaScript files
+[*.js]
+# Use 2 spaces for indentation (common JS practice)
+indent_size = 2
+
+# JSON files
+[*.json]
+# Use 2 spaces for indentation (common JSON practice)
+indent_size = 2
+
+# Markdown files
+[*.md]
+# Markdown files can have varied formatting, keeping default settings
+trim_trailing_whitespace = false
+
+# YAML files
+[*.yaml]
+[*.yml]
+# YAML files use 2 spaces for indentation
+indent_size = 2
+
+# HTML files
+[*.html]
+# Use 2 spaces for indentation (common HTML practice)
+indent_size = 2
+
+# CSS files
+[*.css]
+# Use 2 spaces for indentation (common CSS practice)
+indent_size = 2
