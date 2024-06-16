@@ -30,6 +30,8 @@
 /ui/.env.test.local
 /ui/.env.production.local
 
+/ui/client/*_module/dist
+
 # JetBrains PyCharm and WebStorm project files
 /.idea/
 /*.iml
