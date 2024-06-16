@@ -19,3 +19,8 @@ poetry install
 ```bash
 poetry run start
 ```
+
+### Lint
+```bash
+poetry run lint
+```
