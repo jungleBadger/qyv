@@ -13,6 +13,7 @@ uvicorn = "^0.30.1"
 
 
 python-dotenv = "^1.0.1"
+opencv-python = "^4.10.0.84"
 [tool.poetry.group.dev.dependencies]
 pycodestyle = "^2.12.0"
 
