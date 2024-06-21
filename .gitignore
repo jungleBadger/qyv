@@ -20,6 +20,9 @@
 /service/venv/
 /service/.venv/
 
+/service/frames/*
+*.mp4
+
 # Node.js and Vue.js app under the ui folder using NPM
 /ui/node_modules/
 /ui/dist/
