@@ -21,6 +21,7 @@
 /service/.venv/
 
 /service/frames/*
+/service/audio/*
 *.mp4
 
 # Node.js and Vue.js app under the ui folder using NPM
