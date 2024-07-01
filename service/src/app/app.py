@@ -4,6 +4,7 @@ import uvicorn
 import os
 import shutil
 from src.pipelines.extract_frames_from_video import ExtractFramesFromVideo
+from src.pipelines.extract_features_from_frames import ExtractFeaturesFromFrames
 from src.pipelines.extract_audio_and_transcribe_video import ExtractAudioAndTranscribeVideo
 from src.pipelines.handle_video_file import HandleVideoFile
 import logging
@@ -49,9 +50,13 @@ async def upload_video(file: UploadFile = File(...), frames_per_second: int = Fo
         # Extract frames
         extractor.extract_frames()
 
+        # extract video transcribe each chunk
         transcriber = ExtractAudioAndTranscribeVideo(video_path=temp_video_path, output_dir=upload_audio_dir)
         transcript = transcriber.process()
 
+        # extract features from each image frame
+        extractor = ExtractFeaturesFromFrames(upload_frames_dir)
+        extractor.extract_features()
 
         return JSONResponse(content={"message": "Frames extracted successfully", "frames_dir": upload_frames_dir})
 

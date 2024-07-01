@@ -23,6 +23,9 @@ joblib = "^1.4.2"
 numpy = "<2.0"
 matplotlib = "^3.9.0"
 gtts = "^2.5.1"
+transformers = "^4.42.3"
+torch = "^2.3.1"
+torchvision = "^0.18.1"
 [tool.poetry.group.dev.dependencies]
 pycodestyle = "^2.12.0"
 
