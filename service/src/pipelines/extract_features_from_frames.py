@@ -20,22 +20,35 @@ class ExtractFeaturesFromFrames:
     def extract_features(self):
         frames = [f for f in os.listdir(self.frames_dir) if f.endswith('.jpg') or f.endswith('.png')]
         for frame in frames:
-            frame_path = os.path.join(self.frames_dir, frame)
-            image = Image.open(frame_path).convert("RGB")
-            inputs = self.transform(image).unsqueeze(0)  # Add batch dimension
+            features = self.process_frame(frame)
+            self.save_features(frame, features)
 
-            with torch.no_grad():
-                outputs = self.model(inputs)
-                features = outputs.logits.squeeze().tolist()  # Convert tensor to list
+    def process_frame(self, frame: str):
+        frame_path = os.path.join(self.frames_dir, frame)
+        image = Image.open(frame_path).convert("RGB")
+        inputs = self.transform(image).unsqueeze(0)  # Add batch dimension
 
-            feature_data = {
-                "frame": frame,
-                "features": features
-            }
+        with torch.no_grad():
+            outputs = self.model(inputs)
+            features = outputs.logits.squeeze().tolist()  # Convert tensor to list
 
-            # Save features to JSON file
-            json_path = os.path.join(self.output_dir, f"{os.path.splitext(frame)[0]}_features.json")
-            with open(json_path, 'w') as json_file:
-                json.dump(feature_data, json_file, indent=4)
+        return features
 
-            print(f"Processed {frame}")
+    def save_features(self, frame: str, features: list):
+        feature_data = {
+            "frame": frame,
+            "features": features
+        }
+
+        # Save features to JSON file
+        json_path = os.path.join(self.output_dir, f"{os.path.splitext(frame)[0]}_features.json")
+        with open(json_path, 'w') as json_file:
+            json.dump(feature_data, json_file, indent=4)
+
+        print(f"Processed and saved features for {frame}")
+
+# Example usage
+if __name__ == "__main__":
+    frames_dir = "path_to_frames"
+    extractor = ExtractFeaturesFromFrames(frames_dir)
+    extractor.extract_features()
