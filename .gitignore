@@ -45,3 +45,4 @@
 Thumbs.db
 .vscode/
 *.log
+/service/yolov5s.pt
