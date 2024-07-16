@@ -15,6 +15,8 @@
 /service/.env.test.local
 /service/.env.production.local
 
+assets/infrastructure/milvus/volumes
+assets/infrastructure/milvus/*.yaml
 
 # Virtual environment
 /service/venv/
