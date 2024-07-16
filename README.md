@@ -23,6 +23,7 @@ A brief description of what your project does and its purpose.
 - **MoviePy**: Audio extraction
 - **PyDub**: Audio splitting
 - **Librosa**: Audio chunk classification
+- **PyMilvus**: Similarity Database connector
 
 ### Frontend
 
@@ -40,6 +41,12 @@ A brief description of what your project does and its purpose.
 ![Pipelines flow diagram](./assets/flow_diagram.png)
 
 ## Installation and Usage
+
+### Milvus instance
+
+1. Execute Docker
+2. Run the script [assets/infrastructure/milvus/standalone_embed.sh](assets/infrastructure/milvus/standalone_embed.sh)
+
 
 ### Backend Instructions
 
