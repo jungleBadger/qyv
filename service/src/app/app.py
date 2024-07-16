@@ -27,13 +27,15 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 
 @app.post("/upload_video/")
-async def upload_video(file: UploadFile = File(...), frames_per_second: int = Form(1)):
+async def upload_video(file: UploadFile = File(...),
+                       frames_per_second: int = Form(1)):
     logger.info("Received request to upload video")
 
     upload_id = file.filename.split('.')[0]
     upload_frames_dir = os.path.join(FRAMES_DIR, upload_id)
     upload_audio_dir = os.path.join(AUDIO_DIR, upload_id)
-    output_path = os.path.join(OUTPUT_DIR, f"{upload_id}_detected_objects.json")
+    output_path = os.path.join(OUTPUT_DIR,
+                               f"{upload_id}_detected_objects.json")
     os.makedirs(upload_frames_dir, exist_ok=True)
     os.makedirs(upload_audio_dir, exist_ok=True)
 
@@ -47,7 +49,8 @@ async def upload_video(file: UploadFile = File(...), frames_per_second: int = Fo
                                            fps=frames_per_second)
         extractor.extract_frames()
 
-        transcriber = ExtractAudioAndTranscribeVideo(video_path=temp_video_path, output_dir=upload_audio_dir)
+        transcriber = ExtractAudioAndTranscribeVideo(
+            video_path=temp_video_path, output_dir=upload_audio_dir)
         transcript = transcriber.process()
 
         feature_extractor = ExtractFeaturesFromFrames(upload_frames_dir)
@@ -56,7 +59,8 @@ async def upload_video(file: UploadFile = File(...), frames_per_second: int = Fo
         object_detector = DetectObjectsFromFrames(upload_frames_dir)
         object_detector.detect_objects()
 
-        return JSONResponse(content={"message": "Processing completed successfully", "output_path": output_path})
+        return JSONResponse(content={
+                            "message": "Processing completed successfully", "output_path": output_path})
 
     except Exception as e:
         logger.error(f"Error during processing: {str(e)}")
