@@ -8,6 +8,7 @@ from src.pipelines.extract_features_from_frames import ExtractFeaturesFromFrames
 from src.pipelines.extract_audio_and_transcribe_video import ExtractAudioAndTranscribeVideo
 from src.pipelines.handle_video_file import HandleVideoFile
 from src.pipelines.detect_objects_from_frames import DetectObjectsFromFrames
+from src.pipelines.ingest_to_milvus import IngestToMilvus, MilvusClient
 import logging
 
 # Set up logging
@@ -58,6 +59,12 @@ async def upload_video(file: UploadFile = File(...),
 
         object_detector = DetectObjectsFromFrames(upload_frames_dir)
         object_detector.detect_objects()
+
+        milvus_client = MilvusClient(
+            collection_name="object_detection_{upload_id}".format(
+                upload_id=upload_id))
+        ingestor = IngestToMilvus(upload_frames_dir, milvus_client)
+        ingestor.ingest_data()
 
         return JSONResponse(content={
                             "message": "Processing completed successfully", "output_path": output_path})
