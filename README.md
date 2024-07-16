@@ -15,6 +15,19 @@
   * Node.js server
   * Vue.js v3 
 
+### Diagrams
+
+
+#### Stack
+
+![Stack diagram](./assets/stack_diagram.png)
+
+
+#### Pipelines flow
+
+![Pipelines flow diagram](./assets/flow_diagram.png)
+
+
 ### Backend instructions
 
 For specific instructions on how to install the dependencies and run the backend service, refer to the documentation linked below:
