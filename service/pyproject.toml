@@ -27,6 +27,7 @@ torchvision = "^0.18.1"
 requests = "^2.31.0"
 pandas = "^2.0.3"
 
+pymilvus = "^2.4.4"
 [tool.poetry.group.dev.dependencies]
 pycodestyle = "^2.12.0"
 autopep8 = "^2.2.0"
