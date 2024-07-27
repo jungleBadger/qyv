@@ -54,7 +54,7 @@ app.get("/admin", (request, reply) => {
 });
 
 // Start the server with the new method
-app.listen({ port, host }, (err, address) => {
+app.listen({ port, host }, (err) => {
   if (err) {
     app.log.error(err);
     process.exit(1);
