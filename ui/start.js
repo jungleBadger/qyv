@@ -59,5 +59,4 @@ app.listen({ port, host }, (err, address) => {
     app.log.error(err);
     process.exit(1);
   }
-  app.log.info(`Server listening at ${address}`);
 });
